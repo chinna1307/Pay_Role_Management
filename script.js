@@ -1,4 +1,4 @@
-// Available note denominations in descending order
+
 const denominations = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
 
 function calculateChange() {
@@ -9,13 +9,12 @@ function calculateChange() {
     const resultTable = document.getElementById('resultTable');
     const tableBody = document.getElementById('tableBody');
 
-    // Clear previous results
     messageDiv.innerHTML = '';
     tableBody.innerHTML = '';
     resultTable.style.display = 'none';
     messageDiv.className = 'message';
 
-    // Input validation
+
     if (isNaN(billAmount) || isNaN(paidAmount)) {
         messageDiv.className = 'message error';
         messageDiv.innerHTML = 'Please enter valid amounts.';
@@ -33,7 +32,7 @@ function calculateChange() {
         return;
     }
 
-    // Calculate change
+
     let change = paidAmount - billAmount;
     if (change === 0) {
         messageDiv.className = 'message success';
@@ -41,7 +40,6 @@ function calculateChange() {
         return;
     }
 
-    // Calculate minimum notes
     const result = [];
     let remaining = change;
     for (let denom of denominations) {
@@ -52,7 +50,6 @@ function calculateChange() {
         }
     }
 
-    // Display results in table
     if (result.length > 0) {
         resultTable.style.display = 'table';
         result.forEach(item => {
@@ -66,4 +63,5 @@ function calculateChange() {
         messageDiv.className = 'message error';
         messageDiv.innerHTML = 'Unable to calculate change with available denominations.';
     }
+
 }
